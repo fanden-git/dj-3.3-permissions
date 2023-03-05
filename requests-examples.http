@@ -1,0 +1,49 @@
+# получение объявлений
+GET localhost:8000/api/
+Content-Type: application/json
+
+###
+
+# создание объявления
+POST localhost:8000/api/
+Content-Type: application/json
+# Authorization: Token 7c74a86bf93c149cd83ee8dbe3b2b748950ce7f9 # admin
+# Authorization: Token 8f9f9ab8f189c379678c10dcc89dfa6d05bfbc1e # user1
+Authorization: Token 19d3f4b5a6f271e785319a4e02fb128bb73e653d # user2
+
+{
+  "title": "Шкаф2 IKEA",
+  "description": "Срочно Шкаф2 IKEA"
+}
+
+###
+
+# попытка поменять объявление
+PATCH localhost:8000/api/7/
+Content-Type: application/json
+# Authorization: Token 7c74a86bf93c149cd83ee8dbe3b2b748950ce7f9 # admin
+# Authorization: Token 8f9f9ab8f189c379678c10dcc89dfa6d05bfbc1e # user1
+Authorization: Token 19d3f4b5a6f271e785319a4e02fb128bb73e653d # user2
+
+{
+  "title": "Шкаф3 IKEA new",
+  "status": "CLOSED"
+}
+
+###
+
+# фильтрация по создателю
+GET localhost:8000/api/?creator=1
+Content-Type: application/json
+
+###
+
+# фильтрация по ID сообщения
+GET localhost:8000/api/?id=3
+Content-Type: application/json
+
+###
+
+# фильтрация по дате
+GET localhost:8000/api/?created_at_before=2023-03-03
+Content-Type: application/json
